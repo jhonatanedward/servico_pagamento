@@ -43,6 +43,7 @@ public class PagamentoService {
     }
 
     public PagamentoDto atualizarPagamento(Long id, PagamentoDto dto) {
+        Pagamento pagamentoExistente = repository.findById(id).orElseThrow();
         Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
         pagamento.setId(id);
         pagamento = repository.save(pagamento);
